@@ -7,11 +7,7 @@ VERSION = 'version 0.01'
 FORMAT = 'json'
 
 
-def gendiff(file_1, file_2, format=FORMAT):
-    return 'test "{}" "{}" "{}"'.format(file_1, file_2, format)
-
-
-def is_args_correct(file_1, file_2, format=FORMAT):
+def is_args_correct(file_1, file_2, format):
     if not os.path.isfile(file_1):
         print('"{}" is not file'.format(file_1))
 
@@ -23,7 +19,7 @@ def is_args_correct(file_1, file_2, format=FORMAT):
         return False
 
     if format not in {'json', 'plain'}:
-        print('format {} is not correct'.format(format))
+        print('format "{}" is not correct'.format(format))
 
         return False
 
@@ -48,10 +44,7 @@ def heandler(args):
     elif len(args) == 2:  # gendiff first-config.ini second-config.ini
         file_1, file_2 = args
 
-        if not is_args_correct(file_1, file_2):
-            return None
-
-        return gendiff(file_1, file_2)
+        return file_1, file_2, FORMAT
 
     elif len(args) == 4:  # gendiff --format plain first-config.ini second-config.ini
         option, format, file_1, file_2 = args
@@ -61,10 +54,7 @@ def heandler(args):
 
         option, format, file_1, file_2 = args
 
-        if not is_args_correct(file_1, file_2, format):
-            return None
-
-        return gendiff(file_1, file_2, format)
+        return file_1, file_2, format
 
     else:
         return HELP_TEXT
