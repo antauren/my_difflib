@@ -1,10 +1,16 @@
 import os
+import json
 
 with open('help.txt') as f:
     HELP_TEXT = f.read()
 
 VERSION = 'version 0.01'
 FORMAT = 'json'
+
+
+def json_load(path):
+    with open(path) as read_file:
+        return json.load(read_file)
 
 
 def is_args_correct(file_1, file_2, format):
