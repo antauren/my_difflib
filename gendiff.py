@@ -1,9 +1,7 @@
 import sys
 
-import difflib
-import json
-
-from utils import heandler, is_args_correct
+from utils import heandler, is_args_correct, json_load  # TODO
+from step2 import get_diff
 
 
 def gendiff(file_1, file_2, format):
@@ -11,8 +9,14 @@ def gendiff(file_1, file_2, format):
 
 
 if __name__ == '__main__':
-    args = sys.argv[1:]
 
+    args = sys.argv[1:]
     heandled_args = heandler(args)
 
-    print(heandled_args)
+    file_1, file_2 = heandled_args[:2]
+
+    before = json_load(file_1)
+    after = json_load(file_2)
+
+    for row in get_diff(before, after):
+        print(row)
