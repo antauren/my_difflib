@@ -4,6 +4,9 @@
 ## Как запустить
 
 
+```pip install -r requirements.txt```
+
+
 ### Help
 
 ```gendiff -h```
@@ -15,6 +18,10 @@
 
 ### Тест
 ```python -m unittest -v test.py```
+
+
+### Линтер
+```pylint step2.py```
  
 
 ### Цель проекта
