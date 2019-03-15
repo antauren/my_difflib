@@ -25,7 +25,7 @@
 
 
 ### Линтер
-```pylint step2.py```
+```pylint parsers.py```
  
 
 ### Цель проекта
