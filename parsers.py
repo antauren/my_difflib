@@ -5,6 +5,7 @@ import json
 
 
 def parse(path):
+    '''doc string'''  # TODO
     _, ext = os.path.splitext(path)
 
     ext = ext.lower()
@@ -20,10 +21,12 @@ def parse(path):
 
 
 def yaml_load(path):
+    '''doc string'''  # TODO
     with open(path) as f:
         return yaml.load(f.read(), Loader=yaml.FullLoader)
 
 
 def json_load(path):
+    '''doc string'''  # TODO
     with open(path) as read_file:
         return json.load(read_file)

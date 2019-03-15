@@ -1,13 +1,13 @@
-'''docstring'''
+'''docstring'''  # TODO
 
 
 def make_row(sym, key, value):
-    '''pattern'''
+    '''pattern'''  # TODO
     return ' {} {}: {}'.format(sym, key, value)
 
 
 def get_diff(before: dict, after: dict) -> list:
-    '''diff'''
+    '''diff'''  # TODO
     diff = []
 
     for key in set(before) | set(after):

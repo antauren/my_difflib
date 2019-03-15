@@ -1,24 +1,34 @@
-import sys
+"""Usage: gendiff [options] <firstConfig> <secondConfig>
 
-from utils import heandler, is_args_correct  # TODO
-from step2 import get_diff
+  Compares two configuration files and shows a difference.
 
+  Options:
+
+    -h, --help           output usage information
+    -V, --version        output the version number
+    -f, --format [type]  Output format
+"""
+
+import os
+
+from docopt import docopt
+
+from plain_diff import get_diff
 from parsers import parse
 
-
-def gendiff(file_1, file_2, format):
-    return 'test "{}" "{}" "{}"'.format(file_1, file_2, format)
-
-
 if __name__ == '__main__':
+    args = docopt(__doc__, version='gendiff 0.3')
 
-    args = sys.argv[1:]
-    heandled_args = heandler(args)
+    file_1, file_2 = args['<firstConfig>'], args['<secondConfig>']
 
-    file_1, file_2 = heandled_args[:2]
+    if not os.path.isfile(file_1):
+        print('"{}" is not file'.format(file_1))
+    elif not os.path.isfile(file_2):
+        print('"{}" is not file'.format(file_2))
 
-    before = parse(file_1)
-    after = parse(file_2)
+    else:
+        before = parse(file_1)
+        after = parse(file_2)
 
-    for row in get_diff(before, after):
-        print(row)
+        for row in get_diff(before, after):
+            print(row)
