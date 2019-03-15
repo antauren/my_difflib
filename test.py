@@ -2,7 +2,7 @@
 
 import unittest
 
-from step2 import get_diff
+from plain_diff import get_diff
 
 
 class Step2(unittest.TestCase):
