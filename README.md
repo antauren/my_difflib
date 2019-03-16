@@ -21,6 +21,10 @@
 ```gendiff before.yml after.yml```
 
 
+### Сравнение плоских файлов (ini)
+```gendiff before.ini after.ini```
+
+
 ### Тест
 ```python -m unittest -v test.py```
 

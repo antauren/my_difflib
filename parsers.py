@@ -16,6 +16,9 @@ def parse(path):
     elif ext in {'.json'}:
         return json_load(path)
 
+    elif ext in {'.ini'}:
+        return load_ini(path)
+
     else:
         return None
 
@@ -30,3 +33,14 @@ def json_load(path):
     '''doc string'''  # TODO
     with open(path) as read_file:
         return json.load(read_file)
+
+
+import configparser
+
+config = configparser.ConfigParser()
+config.sections()
+
+
+def load_ini(path):  # TODO   #не преобразует 'True' в bool_type
+    config.read(path)
+    return dict(config['DEFAULT'])
