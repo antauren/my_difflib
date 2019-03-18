@@ -3,7 +3,7 @@
 
 def make_row(sym, key, value):
     '''pattern'''  # TODO
-    return ' {} {}: {}'.format(sym, key, value)
+    return sym, key, value
 
 
 def get_diff(before: dict, after: dict) -> list:
