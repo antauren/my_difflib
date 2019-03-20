@@ -2,21 +2,19 @@
 
 import unittest
 
-from plain_diff import get_diff
+from make_diff_dict import make_diff_dict
+from make_diff_list import make_diff_list
 
 
-class Step2(unittest.TestCase):
-    '''test_step2'''
+class Test(unittest.TestCase):
 
-    def test_step_2(self):
-        '''test step2'''
-
-        true = ['   host: hexlet.io',
-                ' + verbose: True',
-                ' - proxy: 123.234.53.22',
-                ' - follow: False',
-                ' - timeout: 50',
-                ' + timeout: 20']
+    def test_make_diff_dict(self):
+        true = {'+ verbose': True,
+                '- proxy': '123.234.53.22',
+                '- timeout': 50,
+                '+ timeout': 20,
+                '  host': 'hexlet.io',
+                '- follow': False}
 
         before = {
             "host": "hexlet.io",
@@ -31,5 +29,28 @@ class Step2(unittest.TestCase):
             "host": "hexlet.io"
         }
 
-        test = get_diff(before, after)
+        test = make_diff_dict(before, after, {})
+        self.assertDictEqual(test, true)
+
+    def test_make_diff_list(self):
+        true = ["Property 'proxy' was removed",
+                "Property 'verbose' was added with value: True",
+                "Property 'follow' was removed",
+                "Property 'timeout' was updated. From 50 to 20"]
+
+        before = {
+            "host": "hexlet.io",
+            "timeout": 50,
+            "proxy": "123.234.53.22",
+            "follow": False
+        }
+
+        after = {
+            "timeout": 20,
+            "verbose": True,
+            "host": "hexlet.io"
+        }
+
+        test = make_diff_list(before, after, [], [])
+
         self.assertSetEqual(set(test), set(true))
