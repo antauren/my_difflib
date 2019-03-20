@@ -15,6 +15,7 @@ from docopt import docopt
 from parsers import parse
 from my_json_dumps import my_json_dumps
 from make_diff_dict import make_diff_dict
+from make_diff_list import make_diff_list
 
 if __name__ == '__main__':
     args = docopt(__doc__, version='gendiff 0.3')
@@ -30,8 +31,12 @@ if __name__ == '__main__':
         before = parse(file_1)
         after = parse(file_2)
 
-        diff = make_diff_dict(before, after, {})
+        if args['--format'] == 'plain':
+            diff = make_diff_list(before, after, [], [])
+            for row in diff:
+                print(row)
 
-        pretty = my_json_dumps(diff)
-
-        print(pretty)
+        else:
+            diff = make_diff_dict(before, after, {})
+            pretty = my_json_dumps(diff)
+            print(pretty)
