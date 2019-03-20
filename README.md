@@ -25,6 +25,9 @@
 ```gendiff before.ini after.ini```
 
 
+### Плоский формат вывода
+```gendiff  --format plain before.json after.json```
+
 ### Тест
 ```python -m unittest -v test.py```
 
