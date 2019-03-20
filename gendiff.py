@@ -12,11 +12,9 @@
 import os
 
 from docopt import docopt
-
-from plain_diff import get_diff
 from parsers import parse
-from bfs_for_dict import make_plain_dict
-from make_json import make_diff_json
+from my_json_dumps import my_json_dumps
+from make_diff_dict import make_diff_dict
 
 if __name__ == '__main__':
     args = docopt(__doc__, version='gendiff 0.3')
@@ -32,11 +30,8 @@ if __name__ == '__main__':
         before = parse(file_1)
         after = parse(file_2)
 
-        pd1 = make_plain_dict(before)
-        pd2 = make_plain_dict(after)
+        diff = make_diff_dict(before, after, {})
 
-        diff = get_diff(pd1, pd2)
+        pretty = my_json_dumps(diff)
 
-        text = make_diff_json(diff)
-
-        print(text)
+        print(pretty)
