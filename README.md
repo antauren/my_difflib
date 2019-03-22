@@ -12,16 +12,16 @@
 
 ```gendiff -h```
 
-### Сравнение плоских файлов (JSON)
+### Сравнение файлов (JSON)
 
 ```gendiff before.json after.json```
 
 
-### Сравнение плоских файлов (yaml)
+### Сравнение файлов (yaml)
 ```gendiff before.yml after.yml```
 
 
-### Сравнение плоских файлов (ini)
+### Сравнение файлов (ini)
 ```gendiff before.ini after.ini```
 
 
